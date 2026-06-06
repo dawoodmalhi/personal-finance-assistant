@@ -11,9 +11,11 @@
     "prisma:migrate": "dotenv -e .env -- prisma migrate dev --name init",
     "prisma:push": "dotenv -e .env -- prisma db push",
     "check-db": "dotenv -e .env -- node ./scripts/check-db.js",
-    "prisma:seed": "dotenv -e .env -- tsx prisma/seed.ts"
+    "prisma:seed": "dotenv -e .env -- tsx prisma/seed.ts",
+    "prisma:seedAssistant": "dotenv -e .env -- npx tsx prisma/seedChats.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.101.0",
     "@base-ui/react": "^1.5.0",
     "@clerk/backend": "^3.5.0",
     "@clerk/nextjs": "^7.4.3",
@@ -32,7 +34,9 @@
     "postcss": "^8.5.15",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-markdown": "^10.1.0",
     "recharts": "^3.8.1",
+    "remark-gfm": "^4.0.1",
     "shadcn": "^4.10.0",
     "svix": "^1.95.1",
     "tailwind-merge": "^3.6.0",
