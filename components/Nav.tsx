@@ -8,7 +8,8 @@ import {
   IconLayoutDashboard,
   IconInfoCircle,
   IconMail,
-  IconUser,
+  IconCloudUpload,
+  IconArrowsLeftRight,
 } from "@tabler/icons-react";
 
 import { buttonVariants } from "@/components/ui/Button";
@@ -22,6 +23,8 @@ const publicNavItems = [
 
 const signedInNavItems = [
   { href: "/dashboard", label: "Dashboard", icon: IconLayoutDashboard },
+  { href: "/transactions", label: "Transactions", icon: IconArrowsLeftRight },
+  { href: "/transactions/import", label: "Import Data", icon: IconCloudUpload },
 ] as const;
 
 const Nav = () => {
@@ -29,16 +32,10 @@ const Nav = () => {
   const { isSignedIn } = useUser();
 
   const navItems = isSignedIn
-    ? [
-        publicNavItems[0],
-        signedInNavItems[0],
-        publicNavItems[1],
-        publicNavItems[2],
-      ]
-    : [...publicNavItems];
+    ? signedInNavItems : [...publicNavItems];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <div className="flex size-8 items-center justify-center bg-primary text-primary-foreground">
@@ -54,7 +51,7 @@ const Nav = () => {
             const isActive =
               href === "/"
                 ? pathname === "/"
-                : pathname === href || pathname.startsWith(`${href}/`);
+                : pathname === href;
 
             return (
               <Link
@@ -68,7 +65,7 @@ const Nav = () => {
                 )}
               >
                 <Icon className="size-4" />
-                <span className="hidden sm:inline">{label}</span>
+                <span className="sm:inline">{label}</span>
               </Link>
             );
           })}
