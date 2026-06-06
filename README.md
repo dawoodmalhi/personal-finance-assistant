@@ -1,82 +1,95 @@
 # Personal Finance Assistant
 
-Welcome to the Personal Finance Assistant application! This project is designed to help users manage their personal finances effectively. Below is an overview of the project's structure and features.
-
-## Project Structure
-
-```
-personal-finance-assistant
-├── app
-│   ├── layout.tsx          # Base layout of the application
-│   ├── page.tsx            # Main entry point of the application
-│   ├── globals.css         # Global CSS styles
-│   ├── api
-│   │   └── route.ts        # API route definitions
-│   └── dashboard
-│       ├── page.tsx        # Dashboard page
-│       └── components
-│           └── Overview.tsx # Overview component for the dashboard
-├── components
-│   ├── Header.tsx          # Header component
-│   ├── Footer.tsx          # Footer component
-│   ├── Nav.tsx             # Navigation component
-│   └── ui
-│       └── Button.tsx      # Button component from shadcn/ui library
-├── lib
-│   ├── api.ts              # API client setup
-│   ├── db.ts               # Database client setup for Prisma
-│   └── utils.ts            # Utility functions
-├── hooks
-│   └── useUser.ts          # Custom hook for user management
-├── types
-│   └── index.ts            # TypeScript types and interfaces
-├── styles
-│   └── tailwind.css        # Tailwind CSS styles
-├── public
-│   └── robots.txt          # Robots.txt configuration
-├── tests
-│   ├── app.test.ts         # Tests for application components and pages
-│   └── utils.test.ts       # Tests for utility functions
-├── .gitignore               # Git ignore file
-├── package.json             # Project dependencies and scripts
-├── tsconfig.json            # TypeScript configuration
-├── next.config.js           # Next.js configuration
-├── tailwind.config.cjs      # Tailwind CSS configuration
-└── postcss.config.cjs       # PostCSS configuration
-```
+An AI-powered personal finance tracking application that helps you manage budgets, track transactions, and gain insights into your spending habits. Built with an integrated Claude AI assistant that remembers your preferences, proactively alerts you about budgets, and helps you navigate your financial data.
 
 ## Features
 
-- **User Authentication**: Manage user sessions and authentication.
-- **Dashboard**: A comprehensive dashboard to track expenses, income, and savings.
-- **Responsive Design**: Built with Tailwind CSS for a modern and responsive UI.
-- **API Integration**: Connects to external services for financial data.
+- **Smart Dashboard:** Visualize your cash flow, income, and expenses with interactive charts.
+- **Transaction Management:** Import transactions via CSV or sync securely with a mock bank API.
+- **Automated Budgets:** Set monthly or weekly limits by category. Track spending in real-time with visual progress bars and warnings.
+- **AI Financial Assistant:** Chat with Claude to analyze your spending, create new budgets on the fly, and ask financial questions.
+- **Persistent AI Memory:** The assistant silently learns your preferences, pay dates, and financial goals in the background to provide highly personalized advice.
+- **Secure Authentication:** User management and secure routing handled by Clerk.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS & Shadcn UI
+- **Database:** PostgreSQL (hosted on [Supabase](https://supabase.com/))
+- **ORM:** [Prisma](https://www.prisma.io/)
+- **Authentication:** [Clerk](https://clerk.com/)
+- **AI Integration:** [Anthropic SDK](https://docs.anthropic.com/) (Claude 3.5 Models)
+
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following accounts and tools set up:
+- [Node.js](https://nodejs.org/) installed on your machine.
+- A [Supabase](https://supabase.com/) account for the PostgreSQL database.
+- A [Clerk](https://clerk.com/) account for authentication.
+- An [Anthropic](https://console.anthropic.com/) account for the AI API key.
+
+---
 
 ## Getting Started
 
-To get started with the Personal Finance Assistant application, follow these steps:
+Follow these steps to set up the project locally:
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
+1. **Clone the repository:**
+```bash
+   git clone https://github.com/dawoodmalhi/personal-finance-assistant.git
+```
 
-2. Navigate to the project directory:
-   ```
+2. **Navigate to the project directory:**
+```bash
    cd personal-finance-assistant
-   ```
+```
 
-3. Install the dependencies:
-   ```
+3. **Set up environment variables:**
+Create a .env file in the root of your project. Use the provided .env.example as a template or add the following keys:
+
+4. **Install the dependencies:**
+```bash
    npm install
-   ```
+```
 
-4. Run the development server:
-   ```
-   npm run dev
-   ```
+5. **Set up Supabase:**
+Ensure your Supabase direct connection URL is correctly placed in your .env file. Verify the connection by running the built-in database check script:
+```bash
+   npm run check-db
+```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the application.
+6. **Set up Clerk Authentication:**
+Configure your Clerk project. Note for production: You must set up a Clerk Webhook to automatically sync new user sign-ups with your Supabase database using the WEBHOOK_SECRET.
+```bash
+   npm run check-db
+```
+
+7. **Generate the Prisma client:**
+```bash
+   npm run prisma:generate
+```
+
+8. **Run database migrations:**
+Push the database schema to Supabase to create your tables:
+```bash
+   npm run prisma:migrate
+```
+
+9. **Configure and run the database seed:**
+Open the prisma/seed.ts file and update the mock user with a valid email address that exists in both your Clerk and Supabase dashboards. Then, populate your database:
+```bash
+   npm run prisma:seed
+```
+Note: For seeding the chat agent their is also a file (prisma/seedChats.ts), you can use that if needed.
+
+10. **Run the development server:**
+Push the database schema to Supabase to create your tables:
+```bash
+  npm run dev
+```
 
 ## Contributing
 
