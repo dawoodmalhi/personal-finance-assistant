@@ -77,20 +77,7 @@ const Nav = () => {
         <div className="flex shrink-0 items-center gap-2">
           {isSignedIn ? (
             <>
-              <Link
-                href="/profile"
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "sm" }),
-                  "gap-1.5",
-                  (pathname === "/profile" ||
-                    pathname.startsWith("/profile/")) &&
-                    "bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground"
-                )}
-              >
-                <IconUser className="size-4" />
-                <span className="hidden sm:inline">Profile</span>
-              </Link>
-              <UserButton />
+              <UserButton appearance={{ variables: { colorPrimary: '#23c62b' }}}/>
             </>
           ) : (
             <>
