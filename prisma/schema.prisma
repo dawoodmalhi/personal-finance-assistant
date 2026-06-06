@@ -1,0 +1,15 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  clerkId  String  @unique
+  email    String? @unique
+  name     String?
+  deleted  Boolean @default(false)
+}
