@@ -63,9 +63,6 @@ Ensure your Supabase direct connection URL is correctly placed in your .env file
 
 6. **Set up Clerk Authentication:**
 Configure your Clerk project. Note for production: You must set up a Clerk Webhook to automatically sync new user sign-ups with your Supabase database using the WEBHOOK_SECRET.
-```bash
-   npm run check-db
-```
 
 7. **Generate the Prisma client:**
 ```bash
