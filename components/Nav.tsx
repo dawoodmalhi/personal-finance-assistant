@@ -10,7 +10,8 @@ import {
   IconMail,
   IconCloudUpload,
   IconArrowsLeftRight,
-  IconMessageCircle
+  IconMessageCircle,
+  IconWallet
 } from "@tabler/icons-react";
 
 import { buttonVariants } from "@/components/ui/Button";
@@ -24,6 +25,7 @@ const publicNavItems = [
 
 const signedInNavItems = [
   { href: "/dashboard", label: "Dashboard", icon: IconLayoutDashboard },
+  { href: "/dashboard/budgets", label: "Budgets", icon: IconWallet },
   { href: "/transactions", label: "Transactions", icon: IconArrowsLeftRight },
   { href: "/transactions/import", label: "Import Data", icon: IconCloudUpload },
   { href: "/dashboard/chat", label: "Assistant", icon: IconMessageCircle   },
